@@ -1,0 +1,7 @@
+{
+  "name": "Pulsar",
+  "description": "API - Blockchain gateway for Fupio's Blockchain",
+  "repository": "https://github.com/fupio/pulsar",
+  "logo": "https://rawgit.com/fupio/pulsar/master/public/node.svg",
+  "keywords": ["node", "express", "static"]
+}

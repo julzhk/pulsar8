@@ -1,0 +1,29 @@
+{
+  "name": "pulsar",
+  "version": "0.2.0",
+  "description": "API - Blockchain gateway for Fupio's Blockchain",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "engines": {
+    "node": "9.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fupio/pulsar"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "author": "Mehmet Kose",
+  "contributors": [
+    "Mehmet Kose <mehmetkose122@gmail.com> (http://mehmetkose.github.io)"
+  ],
+  "license": "MIT"
+}

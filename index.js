@@ -23,19 +23,24 @@ app.get('/', (req, res) => {
   });
 });
 app.get('/chain', (req, res) => {
-  const url = `https://orion8.herokuapp.com/chain`;
+  const url = "https://orion8.herokuapp.com/chain";
   const chainKey = "chain";
   ram.get(chainKey, (ramErr, ramResponse) => {
     axios.get(url).then(apiResponse => {
-      if(ramErr || !ramResponse){
+      console.log("apiResponse", apiResponse.data)
+      if (ramErr || !ramResponse && apiResponse) {
         console.log("1")
         ram.set(chainKey, JSON.stringify(apiResponse.data), (error, _r)=> error && console.log(error));
         return res.json(apiResponse.data);
       }
-      else if (ramResponse && apiResponse){
+      else if (ramResponse && apiResponse) {
         console.log("2")
         ram.set(chainKey, JSON.stringify(apiResponse.data), (error, _r)=> error && console.log(error));
+        console.log("ramResponse", ramResponse)
         return res.json(JSON.parse(ramResponse));
+      }
+      else {
+        return res.json({no: "data"});
       }
     }).catch(error => {
       console.log("3")

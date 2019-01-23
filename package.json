@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js --harmony",
+    "dev": "nodemon index.js",
     "tail": "heroku logs --tail"
   },
   "dependencies": {

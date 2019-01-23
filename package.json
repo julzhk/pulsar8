@@ -4,17 +4,21 @@
   "description": "API - Blockchain gateway for Fupio's Blockchain",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js --harmony",
+    "tail": "heroku logs --tail"
   },
   "dependencies": {
-    "express": "^4.13.3"
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "redis": "^2.8.0"
   },
   "engines": {
     "node": "9.9.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fupio/pulsar"
+    "url": "https://github.com/fupio/pulsar8"
   },
   "keywords": [
     "node",

@@ -9,26 +9,28 @@ const redis = require('redis');
 // connect to Redis
 const REDISCLOUD_URL = process.env.REDISCLOUD_URL;
 const ram = redis.createClient(REDISCLOUD_URL);
+
 ram.on('connect', () => {
   console.log(`connected to redis`);
 });
+
 ram.on('error', err => {
   console.log(`Error: ${err}`);
 });
-
 
 app.get('/', (req, res) => {
   res.sendFile('index.html', {
     root: path.join(__dirname, 'views')
   });
 });
+
 app.get('/chain', (req, res) => {
   const url = "https://orion8.herokuapp.com/chain";
   const chainKey = "chain";
+  
   ram.get(chainKey, (ramErr, ramResponse) => {
     axios.get(url).then(apiResponse => {
-      console.log("apiResponse", apiResponse.data)
-      if (ramErr || !ramResponse && apiResponse) {
+      if (ramErr || !ramResponse && apiResponse.data) {
         console.log("1")
         ram.set(chainKey, JSON.stringify(apiResponse.data), (error, _r)=> error && console.log(error));
         return res.json(apiResponse.data);
@@ -48,24 +50,6 @@ app.get('/chain', (req, res) => {
     });
   })
 
-  // ram.get("chain", (err, response) => {
-  //   // if (response) {
-  //   //   return res.json(JSON.stringify(response));
-  //   // }
-
-  //   axios.get(url).then(response => {
-  //     ram.set("chain", JSON.stringify(response.data), function(err, result) {
-  //       if (err) console.log(err);
-  //     });
-  //   })
-
-  // })
-
-  // axios.get(url).then(response => {
-  //   return res.json({ response: response.data });
-  // }).catch(error => {
-  //   console.log(error);
-  // });
 });
 
 app.set('port', (process.env.PORT || 5000))

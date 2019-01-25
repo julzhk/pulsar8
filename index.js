@@ -35,7 +35,11 @@ app.get('/:slug', (req, res) => {
         return res.json(apiResponse.data);
       }
       else if (ramResponse && apiResponse) {
-        ram.set(slug, JSON.stringify(apiResponse.data), (error, _r)=> error && console.log(error));
+        let olderChain = JSON.parse(ramResponse);
+        let newChain = apiResponse.data;
+        if (newChain.length > olderChain.length) {
+          ram.set(slug, JSON.stringify(apiResponse.data), (error, _r)=> error && console.log(error));
+        }
         return res.json(JSON.parse(ramResponse));
       }
       else {

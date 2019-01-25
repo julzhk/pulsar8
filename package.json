@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js --harmony",
     "dev": "nodemon index.js",
+    "deploy": "git push heroku master && npm run tail",
     "tail": "heroku logs --tail"
   },
   "dependencies": {

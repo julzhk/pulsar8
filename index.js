@@ -46,7 +46,7 @@ app.get('/:slug', (req, res) => {
         return res.json({no: "data"});
       }
     }).catch(error => {
-      return res.json({something: "wrong"});
+      return res.json(JSON.parse(ramResponse));
     });
   })
 

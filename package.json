@@ -1,10 +1,10 @@
 {
-  "name": "pulsar",
-  "version": "0.2.0",
+  "name": "pulsar8",
+  "version": "0.2.2",
   "description": "API - Blockchain gateway for Fupio's Blockchain",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js --harmony",
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "deploy": "git push heroku master && npm run tail",
     "tail": "heroku logs --tail"
